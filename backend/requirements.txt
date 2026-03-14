@@ -4,8 +4,11 @@ python-dotenv
 pydantic
 python-multipart
 langchain
+langchain-classic
 langchain-community
 langchain-google-genai
 langchain-text-splitters
+langchain-core
 faiss-cpu
+numpy
 pypdf

@@ -1,5 +1,6 @@
 import os
 import shutil
+import traceback
 from fastapi import FastAPI, File, UploadFile, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
@@ -46,7 +47,9 @@ async def upload_pdf(file: UploadFile = File(...)):
         chunks_count = process_pdf(file_path)
         return {"message": "PDF processed successfully", "chunks": chunks_count, "filename": file.filename}
     except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Error processing PDF: {str(e)}")
+        error_detail = f"Error processing PDF: {str(e)}\n\nTraceback:\n{traceback.format_exc()}"
+        print(error_detail)
+        raise HTTPException(status_code=500, detail=error_detail)
 
 @app.post("/api/chat")
 async def chat(request: ChatRequest):

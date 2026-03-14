@@ -38,7 +38,12 @@ export default function UploadZone({ onUploadSuccess }: { onUploadSuccess: (file
       });
 
       if (!response.ok) {
-        throw new Error("Failed to process PDF.");
+        let detail = "Failed to process PDF.";
+        try {
+          const errData = await response.json();
+          detail = errData.detail || detail;
+        } catch {}
+        throw new Error(detail);
       }
 
       const data = await response.json();

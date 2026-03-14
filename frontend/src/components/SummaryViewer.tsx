@@ -10,7 +10,7 @@ export default function SummaryViewer() {
   const handleGenerate = async () => {
     setIsLoading(true);
     try {
-      const response = await fetch("http://localhost:8000/api/summarize", { method: "POST" });
+      const response = await fetch("https://docchat-ai-1.onrender.com/api/summarize", { method: "POST" });
       if (!response.ok) throw new Error("Failed to generate summary");
       const data = await response.json();
       setSummary(data.summary);

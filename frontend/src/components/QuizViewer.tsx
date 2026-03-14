@@ -20,7 +20,7 @@ export default function QuizViewer() {
   const handleGenerate = async () => {
     setIsLoading(true);
     try {
-      const response = await fetch("http://localhost:8000/api/quiz", { method: "POST" });
+      const response = await fetch("https://docchat-ai-1.onrender.com/api/quiz", { method: "POST" });
       if (!response.ok) throw new Error("Failed to generate quiz");
       const data = await response.json();
       

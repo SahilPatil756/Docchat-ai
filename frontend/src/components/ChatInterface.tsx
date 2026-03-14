@@ -32,7 +32,7 @@ export default function ChatInterface() {
     setIsLoading(true);
 
     try {
-      const res = await fetch("http://localhost:8000/api/chat", {
+      const res = await fetch("https://docchat-ai-1.onrender.com/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ query: userMsg }),

@@ -32,7 +32,7 @@ export default function UploadZone({ onUploadSuccess }: { onUploadSuccess: (file
     formData.append("file", file);
 
     try {
-      const response = await fetch("http://localhost:8000/api/upload", {
+      const response = await fetch("https://docchat-ai-1.onrender.com/api/upload", {
         method: "POST",
         body: formData,
       });
